@@ -12,7 +12,7 @@ const routes: RouteRecordRaw[] = [
         name: 'Dashboard',
         component: () =>
           import(
-            /* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'
+            /* webpackChunkName: "dashboard" */ '@v/dashboard/index.vue'
           ),
         meta: {
           title: 'Dashboard'

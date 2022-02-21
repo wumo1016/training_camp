@@ -1,9 +1,13 @@
 @import './variables.scss';
-@import './sidebar.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 html {
   height: 100%;
-  box-sizing: border-box;
 }
 
 body {
@@ -17,4 +21,9 @@ body {
 
 #app {
   height: 100%;
+  .sidebar-container {
+    width: $sideBarWidth !important;
+    height: 100%;
+    background-color: pink;
+  }
 }
