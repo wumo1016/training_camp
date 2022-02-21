@@ -1,10 +1,9 @@
-<script setup>
-
+<script setup lang="ts">
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-  vue3
+  <RouterView />
 </template>
 
-<style>
-</style>
+<style></style>
