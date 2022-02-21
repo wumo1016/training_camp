@@ -11,5 +11,11 @@ module.exports = {
   ],
   env: {
     "vue/setup-compiler-macros": true,
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        ignores: [],
+      },
+    ],
   },
 };

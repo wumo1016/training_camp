@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import ElementPlus from "element-plus";
+import ElementPlus from "@/plugins/element";
 
 import App from "./App.vue";
 import router from "./router";

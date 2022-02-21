@@ -6,7 +6,8 @@
     "target": "esnext", 
     "module": "esnext",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@v/*": ["./src/views/*"],
     }
   },
   "references": [
