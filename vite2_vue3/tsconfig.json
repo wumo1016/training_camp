@@ -3,7 +3,7 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5", 
+    "target": "esnext", 
     "paths": {
       "@/*": ["./src/*"],
       "@v/*": ["./src/views/*"],
