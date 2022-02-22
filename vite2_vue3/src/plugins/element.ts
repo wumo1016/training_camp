@@ -30,7 +30,8 @@ import {
   ElSelect,
   ElOption,
   ElUpload,
-  ElCalendar
+  ElCalendar,
+  ElConfigProvider
 } from 'element-plus'
 // 默认主题
 import 'element-plus/theme-chalk/index.css'
@@ -38,9 +39,6 @@ import 'element-plus/theme-chalk/index.css'
 // Element Plus 组件内部默认使用英语
 // https://element-plus.gitee.io/#/zh-CN/component/i18n
 
-
-import { provideGlobalConfig } from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
 // Element Plus 直接使用了 Day.js 项目的时间日期国际化设置, 并且会自动全局设置已经导入的 Day.js 国际化配置。
 import 'dayjs/locale/zh-cn'
 
@@ -52,10 +50,6 @@ interface ElementOptions {
 }
 
 export default (app: App, options: ElementOptions): void => {
-  provideGlobalConfig({
-    locale: zhCn
-  })
-
   // 按需导入组件列表
   const components = [
     ElButton,
@@ -88,7 +82,8 @@ export default (app: App, options: ElementOptions): void => {
     ElSelect,
     ElOption,
     ElUpload,
-    ElCalendar
+    ElCalendar,
+    ElConfigProvider
   ]
 
   components.forEach(component => {
