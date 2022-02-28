@@ -1,4 +1,5 @@
-// svgo.config.js
+// https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md
+
 module.exports = {
   multipass: true, // boolean. false by default
   datauri: 'enc', // 'base64' (default), 'enc' or 'unenc'.
