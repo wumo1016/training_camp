@@ -37,7 +37,6 @@
     .app-main {
       /* 50= navbar  50  如果有tagsview + 34  */
       min-height: calc(100vh - 84px);
-      background: red;
     }
   }
 }
