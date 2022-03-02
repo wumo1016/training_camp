@@ -8,7 +8,7 @@ const components: {
 }
 
 export default (app: App) => {
-  Object.keys(SvgIcon).map(key => {
+  Object.keys(components).map(key => {
     app.component(key, components[key])
   })
 }

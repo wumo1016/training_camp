@@ -2,6 +2,7 @@
   <div>
     <h1>Dashboard page</h1>
     <svg-icon icon-class="bug"></svg-icon>
+    <svg-icon icon-class="404" class-name="custom-class"></svg-icon>
   </div>
 </template>
 
