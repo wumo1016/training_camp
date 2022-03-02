@@ -6,9 +6,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "svgo": "svgo -f src/icons/svg",
-    "preview": "vite preview --port 5050",
-    "typecheck": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "preview": "vite preview --port 5050"
   },
   "dependencies": {
     "axios": "^0.26.0",
