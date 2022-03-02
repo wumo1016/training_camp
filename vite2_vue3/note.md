@@ -1,0 +1,1 @@
+- 加载文件 `import.meta.globEager<any>(path)`

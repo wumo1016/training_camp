@@ -1,6 +1,14 @@
-import type { App } from 'vue'
+import type { App, Component } from 'vue'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
+const components: {
+  [key: string]: Component
+} = {
+  SvgIcon
+}
+
 export default (app: App) => {
-  app.component('SvgIcon', SvgIcon)
+  Object.keys(SvgIcon).map(key => {
+    app.component(key, components[key])
+  })
 }

@@ -6,8 +6,7 @@ import './styles/index.scss'
 import App from './App.vue'
 import router from './router'
 import InstallComp from '@/components/index'
-import '@/icons/index'
-import 'virtual:svg-icons-register'
+import 'virtual:svg-icons-register' // 加载svg配置
 
 const app = createApp(App)
 
