@@ -17,33 +17,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
+<script setup lang="ts">
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-// el-menu-item封装
 import SideBarItem from './SideBarItem.vue'
-
-export default defineComponent({
-  name: 'Sidebar',
-  components: {
-    SideBarItem
-  },
-  setup() {
-    const route = useRoute()
-    // 根据路由路径 对应 当前激活的菜单 页面刷新后 激活当前路由匹配的菜单
-    const activeMenu = computed(() => {
-      const { path } = route
-      return path
-    })
-    // 菜单展开收起状态 后面会放store里
-    const isCollapse = ref(false)
-
-    return {
-      isCollapse,
-      activeMenu
-    }
-  }
+const route = useRoute()
+const activeMenu = computed(() => {
+  const { path } = route
+  return path
 })
+const isCollapse = ref(false)
 </script>
 
+<!-- module默认值是 $style 也可以指定名称 module='' -->
 <style module lang="scss" src="@/styles/variables.scss"></style>

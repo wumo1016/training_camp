@@ -16,14 +16,8 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Sidebar from './components/SideBar/index.vue'
-
-export default {
-  components: {
-    Sidebar
-  }
-}
 </script>
 
 <style lang="scss" scoped>
