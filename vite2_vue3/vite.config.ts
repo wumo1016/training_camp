@@ -29,8 +29,8 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         charset: false, // 解决打包编译报错
-        // javascriptEnabled: true, // scss 支持内联 JavaScript
-        additionalData: "@import '@/styles/variables.scss';" // 引入全局样式
+        // javascriptEnabled: true // scss 支持内联 JavaScript
+        // additionalData: "@import '@/styles/variables.scss';" // 引入全局样式
       }
     }
   }

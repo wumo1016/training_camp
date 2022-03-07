@@ -20,6 +20,8 @@ const test = () => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
+
 h1 {
   color: $menuActiveText;
 }

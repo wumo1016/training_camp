@@ -1,6 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <div class="sidebar-container">sidebar</div>
+    <div class="sidebar-container">
+      <Sidebar />
+    </div>
     <div class="main-container">
       <div class="header">
         <div class="navbar">navbar</div>
@@ -13,6 +15,16 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import Sidebar from './components/SideBar/index.vue'
+
+export default {
+  components: {
+    Sidebar
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .app-wrapper {
@@ -37,6 +49,7 @@
     .app-main {
       /* 50= navbar  50  如果有tagsview + 34  */
       min-height: calc(100vh - 84px);
+      background: red;
     }
   }
 }
