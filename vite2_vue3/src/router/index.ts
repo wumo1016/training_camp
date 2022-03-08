@@ -13,7 +13,8 @@ const constantRoutes: RouteRecordRaw[] = [
         component: () =>
           import(/* webpackChunkName: "dashboard" */ '@v/Dashboard/index.vue'),
         meta: {
-          title: 'Dashboard'
+          title: 'Dashboard',
+          icon: 'dashboard'
         }
       }
     ]
@@ -35,7 +36,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           ),
         meta: {
           title: 'Document',
-          icon: 'document'
+          icon: 'documentation'
         }
       }
     ]
@@ -59,7 +60,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   }
 ]
 
-const routes = [...constantRoutes, ...asyncRoutes]
+export const routes = [...constantRoutes, ...asyncRoutes]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
