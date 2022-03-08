@@ -1,33 +1,30 @@
 <template>
-  <div class="sidebar-item-container">
-    <!-- 一个路由下只有一个子路由的时候 只渲染这个子路由 -->
-    <template v-if="theOnlyOneChildRoute && !theOnlyOneChildRoute.children">
-      <el-menu-item :index="resolvePath(theOnlyOneChildRoute.path)">
-        <svg-icon v-if="icon" class="menu-icon" :icon-class="icon"></svg-icon>
+  <div v-for="item in list" class="sidebar-item-container">
+    <template v-if="item.children?.length">
+      <el-sub-menu :index="resolvePath(item.path)" popper-append-to-body>
         <template #title>
-          <span>{{ theOnlyOneChildRoute?.meta?.title }}</span>
+          <svg-icon
+            v-if="item?.meta?.icon"
+            class="menu-icon"
+            :icon-class="item.meta.icon"
+          ></svg-icon>
+          <span class="submenu-title">{{ item?.meta?.title }}</span>
         </template>
-      </el-menu-item>
+        <sidebar-item :list="item.children" :base-path="item.path" />
+      </el-sub-menu>
     </template>
-    <!-- 多个子路由时 -->
-    <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
-      <template #title>
+    <template v-else>
+      <el-menu-item :index="resolvePath(item.path)">
         <svg-icon
           v-if="item?.meta?.icon"
           class="menu-icon"
           :icon-class="item.meta.icon"
         ></svg-icon>
-        <span class="submenu-title">{{ item?.meta?.title }}</span>
-      </template>
-      <sidebar-item
-        v-for="child in item.children"
-        :key="child.path"
-        :is-nest="true"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-      >
-      </sidebar-item>
-    </el-submenu>
+        <template #title>
+          <span>{{ item?.meta?.title }}</span>
+        </template>
+      </el-menu-item>
+    </template>
   </div>
 </template>
 
@@ -38,54 +35,19 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { type PropType, computed, toRefs } from 'vue'
+import type { PropType } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
 const props = defineProps({
-  item: {
-    type: Object as PropType<RouteRecordRaw>,
+  list: {
+    type: Array as PropType<Array<RouteRecordRaw>>,
     required: true
   },
   basePath: {
     type: String,
-    required: true
+    required: false,
+    default: ''
   }
-})
-
-const { item } = toRefs(props)
-
-const showingChildNumber = computed(() => {
-  const children = (props.item.children || []).filter(child => {
-    if (child.meta && child.meta.hidden) return false
-    return true
-  })
-  return children.length
-})
-
-const theOnlyOneChildRoute = computed(() => {
-  if (showingChildNumber.value > 1) {
-    return null
-  }
-
-  if (item.value.children) {
-    for (const child of item.value.children) {
-      if (!child.meta || !child.meta.hidden) {
-        return child
-      }
-    }
-  }
-
-  return {
-    ...props.item,
-    path: ''
-  }
-})
-
-const icon = computed(() => {
-  return (
-    theOnlyOneChildRoute.value?.meta?.icon ||
-    (props.item.meta && props.item.meta.icon)
-  )
 })
 
 const resolvePath = (childPath: string) => {

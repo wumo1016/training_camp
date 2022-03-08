@@ -12,12 +12,7 @@
       :collapse="isCollapse"
       :collapse-transition="true"
     >
-      <SideBarItem
-        v-for="route in menuRoutes"
-        :key="route.path"
-        :item="route"
-        :base-path="route.path"
-      />
+      <SideBarItem :list="menuRoutes" />
     </el-menu>
   </div>
 </template>
@@ -27,6 +22,7 @@ import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import SideBarItem from './SideBarItem.vue'
 import { routes } from '@/router'
+import type { RouteRecordRaw } from 'vue-router'
 
 const route = useRoute()
 const activeMenu = computed(() => {
@@ -34,7 +30,21 @@ const activeMenu = computed(() => {
   return path
 })
 const isCollapse = ref(false)
-const menuRoutes = routes
+const menuRoutes = ref<Array<RouteRecordRaw>>([])
+routes.map(item => {
+  if (item.children && item.children.length < 2) {
+    menuRoutes.value.push(
+      ...(item.children?.map(v => {
+        v.path = `${item.path}/${v.path}`
+        return v
+      }))
+    )
+  } else {
+    menuRoutes.value.push(item)
+  }
+})
+
+console.log(menuRoutes.value)
 </script>
 
 <!-- module默认值是 $style 也可以指定名称 module='xxx' -->

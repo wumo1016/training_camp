@@ -3,7 +3,7 @@ import Layout from '@/layout/index.vue'
 
 const constantRoutes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: '',
     component: Layout,
     redirect: '/dashboard',
     children: [
@@ -11,7 +11,7 @@ const constantRoutes: RouteRecordRaw[] = [
         path: 'dashboard',
         name: 'Dashboard',
         component: () =>
-          import(/* webpackChunkName: "dashboard" */ '@v/Dashboard/index.vue'),
+          import(/* webpackChunkName: "dashboard" */ '@v/dashboard/index.vue'),
         meta: {
           title: 'Dashboard',
           icon: 'dashboard'
@@ -29,10 +29,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'index',
-        name: 'Document',
+        name: 'document',
         component: () =>
           import(
-            /* webpackChunkName: "documentation" */ '@/views/Document/index.vue'
+            /* webpackChunkName: "documentation" */ '@/views/document/index.vue'
           ),
         meta: {
           title: 'Document',
@@ -50,17 +50,52 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         path: 'index',
         name: 'Guide',
         component: () =>
-          import(/* webpackChunkName: "guide" */ '@/views/Duide/index.vue'),
+          import(/* webpackChunkName: "guide" */ '@/views/guide/index.vue'),
         meta: {
-          title: 'Guide',
+          title: 'guide',
           icon: 'guide'
+        }
+      }
+    ]
+  },
+  {
+    path: '/system',
+    component: Layout,
+    redirect: '/system/user',
+    meta: {
+      title: 'System',
+      icon: 'lock'
+    },
+    children: [
+      {
+        path: 'menu',
+        component: () =>
+          import(/* webpackChunkName: "menu" */ '@/views/system/menu.vue'),
+        meta: {
+          title: 'Menu Management'
+        }
+      },
+      {
+        path: 'role',
+        component: () =>
+          import(/* webpackChunkName: "role" */ '@/views/system/role.vue'),
+        meta: {
+          title: 'Role Management'
+        }
+      },
+      {
+        path: 'user',
+        component: () =>
+          import(/* webpackChunkName: "user" */ '@/views/system/user.vue'),
+        meta: {
+          title: 'User Management'
         }
       }
     ]
   }
 ]
 
-export const routes = [...constantRoutes, ...asyncRoutes]
+export const routes: Array<RouteRecordRaw> = [...constantRoutes, ...asyncRoutes]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
