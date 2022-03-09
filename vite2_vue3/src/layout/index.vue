@@ -21,10 +21,39 @@ import Sidebar from './components/SideBar/index.vue'
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/variables.scss';
 .app-wrapper {
   display: flex;
   width: 100%;
   height: 100%;
+  .sidebar-container {
+    height: 100%;
+    background-color: $menuBg;
+    // menu未收起时样式
+    &-menu:not(.el-menu--collapse) {
+      width: $sideBarWidth;
+    }
+    // 菜单收起时的样式调整
+    .el-menu--collapse {
+      // 隐藏submenu title
+      .submenu-title {
+        display: none;
+      }
+    }
+    .el-submenu {
+      .el-menu {
+        .el-menu-item {
+          background-color: $subMenuBg !important;
+          &:hover {
+            background-color: $subMenuHover !important;
+          }
+        }
+      }
+    }
+    .el-menu {
+      border: none;
+    }
+  }
   .main-container {
     flex: 1;
     display: flex;
@@ -41,7 +70,6 @@ import Sidebar from './components/SideBar/index.vue'
       }
     }
     .app-main {
-      /* 50= navbar  50  如果有tagsview + 34  */
       min-height: calc(100vh - 84px);
       background: gray;
     }
