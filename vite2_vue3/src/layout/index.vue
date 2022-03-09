@@ -20,13 +20,13 @@
 import Sidebar from './components/SideBar/index.vue'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/styles/variables.scss';
 .app-wrapper {
   display: flex;
   width: 100%;
   height: 100%;
-  :deep .sidebar-container {
+  .sidebar-container {
     height: 100%;
     background-color: $menuBg;
     &-menu:not(.el-menu--collapse) {
@@ -50,7 +50,7 @@ import Sidebar from './components/SideBar/index.vue'
     flex: 1;
     display: flex;
     flex-direction: column;
-    .header {
+    > .header {
       background: cyan;
       .navbar {
         height: 50px;
