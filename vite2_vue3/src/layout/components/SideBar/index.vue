@@ -30,21 +30,21 @@ const activeMenu = computed(() => {
   return path
 })
 const isCollapse = ref(false)
+
 const menuRoutes = ref<Array<RouteRecordRaw>>([])
 routes.map(item => {
   if (item.children && item.children.length < 2) {
     menuRoutes.value.push(
-      ...(item.children?.map(v => {
+      ...item.children?.map(v => {
         v.path = `${item.path}/${v.path}`
         return v
-      }))
+      })
     )
   } else {
     menuRoutes.value.push(item)
   }
 })
-
-console.log(menuRoutes.value)
+// console.log(menuRoutes.value)
 </script>
 
 <!-- module默认值是 $style 也可以指定名称 module='xxx' -->

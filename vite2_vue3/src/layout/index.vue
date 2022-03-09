@@ -26,19 +26,14 @@ import Sidebar from './components/SideBar/index.vue'
   display: flex;
   width: 100%;
   height: 100%;
-  .sidebar-container {
+  :deep .sidebar-container {
     height: 100%;
     background-color: $menuBg;
-    // menu未收起时样式
     &-menu:not(.el-menu--collapse) {
       width: $sideBarWidth;
     }
-    // 菜单收起时的样式调整
-    .el-menu--collapse {
-      // 隐藏submenu title
-      .submenu-title {
-        display: none;
-      }
+    .el-menu {
+      border: none;
     }
     .el-submenu {
       .el-menu {
@@ -49,9 +44,6 @@ import Sidebar from './components/SideBar/index.vue'
           }
         }
       }
-    }
-    .el-menu {
-      border: none;
     }
   }
   .main-container {
