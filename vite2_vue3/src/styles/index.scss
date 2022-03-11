@@ -4,6 +4,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
 }
 
 html {
@@ -21,4 +23,11 @@ body {
 
 #app {
   height: 100%;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
 }
