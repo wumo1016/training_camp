@@ -7,6 +7,9 @@
       class-name="custom-class"
       @click="test"
     ></svg-icon>
+    <el-icon>
+      <plus />
+    </el-icon>
   </div>
 </template>
 

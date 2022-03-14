@@ -3,9 +3,16 @@
     <template v-if="item.children?.length">
       <el-sub-menu :index="resolvePath(item.path)" popper-append-to-body>
         <template #title>
-          <i class="menu-icon" v-if="item?.meta?.icon">
-            <svg-icon :icon-class="item.meta.icon"></svg-icon>
-          </i>
+          <template v-if="item?.meta?.icon">
+            <i class="menu-icon">
+              <component
+                v-if="item.meta.icon.startsWith('el-icon')"
+                class="el-icon"
+                :is="item.meta.icon.replace('el-icon-', '')"
+              />
+              <svg-icon v-else :icon-class="item.meta.icon"></svg-icon>
+            </i>
+          </template>
           <span>{{ item?.meta?.title }} </span>
         </template>
         <sidebar-item
@@ -17,9 +24,16 @@
     <template v-else>
       <Link :to="resolvePath(item.path)">
         <el-menu-item :index="resolvePath(item.path)">
-          <i class="menu-icon" v-if="item?.meta?.icon">
-            <svg-icon :icon-class="item.meta.icon"></svg-icon>
-          </i>
+          <template v-if="item?.meta?.icon">
+            <i class="menu-icon">
+              <component
+                class="el-icon"
+                v-if="item.meta.icon.startsWith('el-icon')"
+                :is="item.meta.icon.replace('el-icon-', '')"
+              />
+              <svg-icon v-else :icon-class="item.meta.icon"></svg-icon>
+            </i>
+          </template>
           <template #title>
             <span> {{ item?.meta?.title }} </span>
           </template>
@@ -63,5 +77,10 @@ const resolvePath = (childPath: string) => {
 .menu-icon {
   margin-right: 10px;
   font-size: 16px;
+}
+.el-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
 </style>

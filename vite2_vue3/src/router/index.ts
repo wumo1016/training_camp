@@ -36,7 +36,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           ),
         meta: {
           title: 'Document',
-          icon: 'documentation'
+          // icon: 'documentation'
+          icon: 'el-icon-plus'
         }
       }
     ]
