@@ -33,7 +33,9 @@ const activeMenu = computed(() => {
 const isCollapse = ref(false)
 
 const menuRoutes = ref<Array<RouteRecordRaw>>([])
-routes.map(item => {
+routes.forEach(item => {
+  if (item.meta?.hidden) return
+  item.children = item.children?.filter(v => !v.meta?.hidden)
   if (item.children && item.children.length < 2) {
     menuRoutes.value.push(
       ...item.children?.map(v => {
