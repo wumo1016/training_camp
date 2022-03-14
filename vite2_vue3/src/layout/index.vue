@@ -9,15 +9,25 @@
         <div class="tags-view">tagsview</div>
       </div>
       <div class="app-main">
-        <h2>app main</h2>
-        <router-view></router-view>
+        <router-view #default="{ Component }">
+          <transition name="fade-transform" mode="out-in">
+            <keep-alive>
+              <component :is="Component" :key="compKey" />
+            </keep-alive>
+          </transition>
+        </router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import Sidebar from './components/SideBar/index.vue'
+
+const route = useRoute()
+const compKey = computed(() => route.path)
 </script>
 
 <style lang="scss">
@@ -62,8 +72,24 @@ import Sidebar from './components/SideBar/index.vue'
       }
     }
     .app-main {
-      min-height: calc(100vh - 84px);
+      height: calc(100vh - 84px);
       background: gray;
+      overflow: hidden;
+
+      .fade-transform-enter-active,
+      .fade-transform-leave-active {
+        transition: all 0.5s;
+      }
+
+      .fade-transform-enter-from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .fade-transform-leave-to {
+        opacity: 0;
+        transform: translateX(30px);
+      }
     }
   }
 }
