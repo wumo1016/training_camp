@@ -6,9 +6,9 @@
       class="sidebar-container-menu"
       mode="vertical"
       :default-active="activeMenu"
-      :background-color="$style.menuBg"
-      :text-color="$style.menuText"
-      :active-text-color="$style.menuActiveText"
+      :background-color="VariableStyle.menuBg"
+      :text-color="VariableStyle.menuText"
+      :active-text-color="VariableStyle.menuActiveText"
       :collapse="isCollapse"
       collapse-transition
     >
@@ -19,11 +19,11 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, type RouteRecordRaw } from 'vue-router'
 import SideBarItem from './SideBarItem.vue'
 import { routes } from '@/router'
-import type { RouteRecordRaw } from 'vue-router'
 import { isExternal } from '@/utils/validate'
+import VariableStyle from '@/styles/variables.module.scss'
 
 const route = useRoute()
 const activeMenu = computed(() => {
@@ -50,4 +50,4 @@ routes.forEach(item => {
 </script>
 
 <!-- module默认值是 $style 也可以指定名称 module='xxx' -->
-<style module lang="scss" src="@/styles/variables.scss"></style>
+<!-- <style module lang="scss" src="@/styles/variables.module.scss"></style> -->

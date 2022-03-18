@@ -15,6 +15,7 @@
 
 <script lang="ts" setup>
 import { getCurrentInstance } from 'vue'
+
 const { proxy } = getCurrentInstance()!
 
 const test = () => {
@@ -23,8 +24,7 @@ const test = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
-
+@import '@/styles/variables.module.scss';
 h1 {
   color: $menuActiveText;
 }

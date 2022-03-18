@@ -31,7 +31,7 @@ const compKey = computed(() => route.path)
 </script>
 
 <style lang="scss">
-@import '@/styles/variables.scss';
+@import '@/styles/variables.module.scss';
 .app-wrapper {
   display: flex;
   width: 100%;
