@@ -55,7 +55,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'guide',
           icon: 'guide',
-          hidden: true
+          hidden: false,
+          activeMenu: '/document/index'
         }
       }
     ]

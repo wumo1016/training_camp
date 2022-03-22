@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 测试展开收起 -->
-    <h6 @click="isCollapse = !isCollapse">展收测试</h6>
+    <h6 @click="isCollapse = !isCollapse">{{ activeMenu }}</h6>
     <el-menu
       class="sidebar-container-menu"
       mode="vertical"
@@ -27,8 +27,8 @@ import VariableStyle from '@/styles/variables.module.scss'
 
 const route = useRoute()
 const activeMenu = computed(() => {
-  const { path } = route
-  return path
+  const { path, meta } = route
+  return meta.activeMenu || path
 })
 const isCollapse = ref(false)
 
