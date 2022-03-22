@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 测试展开收起 -->
-    <h6 @click="isCollapse = !isCollapse">{{ activeMenu }}</h6>
+    <h6 @click="isCollapse = !isCollapse">展收测试</h6>
     <el-menu
       class="sidebar-container-menu"
       mode="vertical"
