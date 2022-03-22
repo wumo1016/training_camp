@@ -36,7 +36,7 @@ const menuRoutes = ref<Array<RouteRecordRaw>>([])
 routes.forEach(item => {
   if (item.meta?.hidden) return
   item.children = item.children?.filter(v => !v.meta?.hidden)
-  if (item.children && item.children.length < 2) {
+  if (item.children && item.children.length < 2 && !item.meta?.alwaysShow) {
     menuRoutes.value.push(
       ...item.children?.map(v => {
         v.path = isExternal(v.path) ? v.path : `${item.path}/${v.path}`
