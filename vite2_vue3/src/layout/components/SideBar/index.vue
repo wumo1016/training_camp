@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- 测试展开收起 -->
-    <h6 @click="isCollapse = !isCollapse">展收测试</h6>
     <el-menu
       class="sidebar-container-menu"
       mode="vertical"
@@ -9,7 +7,7 @@
       :background-color="VariableStyle.menuBg"
       :text-color="VariableStyle.menuText"
       :active-text-color="VariableStyle.menuActiveText"
-      :collapse="isCollapse"
+      :collapse="!appStore.sidebarIsActive"
       collapse-transition
     >
       <SideBarItem :list="menuRoutes" />
@@ -24,13 +22,14 @@ import SideBarItem from './SideBarItem.vue'
 import { routes } from '@/router'
 import { isExternal } from '@/utils/validate'
 import VariableStyle from '@/styles/variables.module.scss'
+import { useAppStore } from '@/store/app'
 
 const route = useRoute()
 const activeMenu = computed(() => {
   const { path, meta } = route
   return meta.activeMenu || path
 })
-const isCollapse = ref(false)
+const appStore = useAppStore()
 
 const menuRoutes = ref<Array<RouteRecordRaw>>([])
 routes.forEach(item => {
