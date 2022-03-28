@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
+  persist: true,
   state: () => ({
     sidebar: {
       isActive: true

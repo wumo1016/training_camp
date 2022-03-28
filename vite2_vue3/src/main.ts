@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import ElementPlus, { type ISize } from '@/plugins/element'
 import './styles/index.scss'
@@ -9,8 +10,10 @@ import InstallComp from '@/components/index'
 import 'virtual:svg-icons-register' // 加载svg配置
 
 const app = createApp(App)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
 app.use(ElementPlus)
 app.use(InstallComp)
