@@ -5,7 +5,9 @@
     </div>
     <div class="main-container">
       <div class="header">
-        <div class="navbar">navbar</div>
+        <div class="navbar">
+          <Breadcrumb />
+        </div>
         <div class="tags-view">tagsview</div>
       </div>
       <div class="app-main">
@@ -25,6 +27,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import Sidebar from './components/SideBar/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 
 const route = useRoute()
 const compKey = computed(() => route.path)
@@ -64,7 +67,7 @@ const compKey = computed(() => route.path)
       background: cyan;
       .navbar {
         height: 50px;
-        background: #1890ff;
+        background: #fff;
       }
       .tags-view {
         height: 34px;

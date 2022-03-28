@@ -10,5 +10,6 @@ declare module 'vue-router' {
     breadcrumb?: boolean // 该路由是否显示面包屑
     affix?: boolean // 固定显示在tagsView中
     alwaysShow?: boolean // 菜单是否一直显示根路由
+    dashboard?: boolean // 是否是首页
   }
 }

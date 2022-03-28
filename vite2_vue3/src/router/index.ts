@@ -14,7 +14,8 @@ const constantRoutes: RouteRecordRaw[] = [
           import(/* webpackChunkName: "dashboard" */ '@v/dashboard/index.vue'),
         meta: {
           title: 'Dashboard',
-          icon: 'dashboard'
+          icon: 'dashboard',
+          dashboard: true
         }
       }
     ]
@@ -76,8 +77,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "menu" */ '@/views/system/menu.vue'),
         meta: {
-          title: 'Menu Management',
-          hidden: true
+          title: 'Menu Management'
+          // hidden: true
         }
       },
       {
@@ -85,8 +86,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "role" */ '@/views/system/role.vue'),
         meta: {
-          title: 'Role Management',
-          hidden: true
+          title: 'Role Management'
+          // hidden: true
         }
       },
       {
