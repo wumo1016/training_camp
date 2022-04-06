@@ -32,7 +32,6 @@ const toggleClick = () => emit('toggleClick')
 .hamburger-container {
   line-height: 46px;
   height: 100%;
-  float: left;
   cursor: pointer;
   transition: background 0.3s;
   -webkit-tap-highlight-color: transparent;
