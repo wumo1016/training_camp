@@ -10,6 +10,7 @@
     <el-icon>
       <plus />
     </el-icon>
+    <el-button>测试</el-button>
   </div>
 </template>
 

@@ -41,7 +41,7 @@ import 'dayjs/locale/zh-cn' // 默认直接使用了 Day.js 项目的时间日�
 import { Plus } from '@element-plus/icons-vue'
 
 // $ELEMENT size属性类型
-export type ISize = 'default' | 'medium' | 'small' | 'mini'
+export type ISize = 'large' | 'default' | 'small'
 
 export default (app: App): void => {
   // 按需导入组件列表
@@ -93,10 +93,8 @@ export default (app: App): void => {
   app.config.globalProperties.$confirm = ElMessageBox.confirm
   app.config.globalProperties.$alert = ElMessageBox.alert
   app.config.globalProperties.$prompt = ElMessageBox.prompt
+  app.config.globalProperties.$prompt = ElMessageBox.prompt
 
   // 全局配置 https://element-plus.gitee.io/#/zh-CN/component/quickstart#quan-ju-pei-zhi
   // 该对象目前支持 size 与 zIndex 字段。size 用于改变组件的默认尺寸 small，zIndex 设置弹框的初始 z-index（默认值：2000）。
-  app.config.globalProperties.$ELEMENT = {
-    size: 'medium'
-  }
 }

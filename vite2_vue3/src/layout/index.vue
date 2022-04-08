@@ -11,7 +11,7 @@
       <div class="app-main">
         <router-view #default="{ Component }">
           <transition name="fade-transform" mode="out-in">
-            <keep-alive>
+            <keep-alive :include="cacheViews">
               <component :is="Component" :key="compKey" />
             </keep-alive>
           </transition>
@@ -22,13 +22,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Sidebar from './components/SideBar/index.vue'
 import NavBar from './components/NavBar/index.vue'
 
 const route = useRoute()
 const compKey = computed(() => route.path)
+const cacheViews = ref([])
 </script>
 
 <style lang="scss">
