@@ -71,7 +71,6 @@ const cacheViews = ref([])
     }
     .app-main {
       height: calc(100vh - 84px);
-      background: gray;
       overflow: hidden;
 
       .fade-transform-enter-active,
