@@ -1,5 +1,4 @@
 // https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md
-
 export default {
   multipass: true, // boolean. false by default
   datauri: 'enc', // 'base64' (default), 'enc' or 'unenc'.
@@ -8,12 +7,8 @@ export default {
     pretty: true // boolean, false by default
   },
   plugins: [
-    // set of built-in plugins enabled by default
-    'preset-default',
-
-    // enable built-in plugins by name
-    'prefixIds',
-
+    'preset-default', // set of built-in plugins enabled by default
+    'prefixIds', // enable built-in plugins by name
     // or by expanded notation which allows to configure plugin
     {
       name: 'sortAttrs',
