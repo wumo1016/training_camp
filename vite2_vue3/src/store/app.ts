@@ -1,23 +1,59 @@
 import { defineStore } from 'pinia'
 import type { ISize } from '@/plugins/element'
+import type { RouteRecordRaw } from 'vue-router'
 
-export const useAppStore = defineStore('app', {
+interface IAppStore {
+  sidebar: {
+    isActive: boolean
+  }
+  size: ISize
+  visitedViews: RouteRecordRaw[]
+}
+
+interface IAppActions {
+  toggleSidebar: Function
+  setSize: Function
+  addView: Function
+  removeView: Function
+}
+
+export const useAppStore = defineStore<
+  string,
+  IAppStore,
+  { sidebarIsActive: any },
+  IAppActions
+>('app', {
   persist: true,
   state: () => ({
     sidebar: {
       isActive: true
     },
-    size: 'default'
+    size: 'default',
+    visitedViews: []
   }),
   getters: {
-    sidebarIsActive: state => state.sidebar.isActive
+    sidebarIsActive: (state: IAppStore) => state.sidebar.isActive
   },
   actions: {
-    TOGGLE_SIDEBAR() {
+    toggleSidebar() {
       this.sidebar.isActive = !this.sidebar.isActive
     },
-    SET_SIZE(size: ISize) {
+    setSize(size: ISize) {
       this.size = size
+    },
+    addView(view: RouteRecordRaw) {
+      if (this.visitedViews.some(v => v.path === view.path)) return
+      this.visitedViews.push(
+        Object.assign({}, view, {
+          title: view.meta?.title || 'tag-name'
+        })
+      )
+    },
+    removeView(view: RouteRecordRaw) {
+      const i = this.visitedViews.indexOf(view)
+      if (i > -1) {
+        this.visitedViews.splice(i, 1)
+      }
     }
   }
 })

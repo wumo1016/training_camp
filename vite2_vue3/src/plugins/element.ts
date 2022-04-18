@@ -38,7 +38,7 @@ import {
 import 'element-plus/theme-chalk/index.css'
 import 'dayjs/locale/zh-cn' // 默认直接使用了 Day.js 项目的时间日期国际化设置, 并且会自动全局设置已经导入的 Day.js 国际化配置。
 
-import { Plus } from '@element-plus/icons-vue'
+import { Plus, Close } from '@element-plus/icons-vue'
 
 // $ELEMENT size属性类型
 export type ISize = 'large' | 'default' | 'small'
@@ -80,7 +80,8 @@ export default (app: App): void => {
     ElCalendar,
     ElConfigProvider,
     ElIcon,
-    Plus
+    Plus,
+    Close
   ]
 
   components.forEach(component => {

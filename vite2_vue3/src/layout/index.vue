@@ -6,7 +6,9 @@
     <div class="main-container">
       <div class="header">
         <NavBar />
-        <div class="tags-view">tagsview</div>
+        <div class="tags-view">
+          <TagsView />
+        </div>
       </div>
       <div class="app-main">
         <router-view #default="{ Component }">
@@ -26,22 +28,23 @@ import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Sidebar from './components/side-bar/index.vue'
 import NavBar from './components/nav-bar/index.vue'
+import TagsView from './components/tags-view/index.vue'
 
 const route = useRoute()
 const compKey = computed(() => route.path)
 const cacheViews = ref([])
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import '@/styles/variables.module.scss';
 .app-wrapper {
   display: flex;
   width: 100%;
   height: 100%;
-  .sidebar-container {
+  :deep(.sidebar-container) {
     height: 100%;
     background-color: $menuBg;
-    &-menu:not(.el-menu--collapse) {
+    .sidebar-container-menu:not(.el-menu--collapse) {
       width: $sideBarWidth;
     }
     .el-menu {

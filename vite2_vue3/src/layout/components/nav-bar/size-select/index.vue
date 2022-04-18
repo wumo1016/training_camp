@@ -47,7 +47,7 @@ const refreshView = async () => {
 }
 
 const handleSize = (command: ISize) => {
-  appStore.SET_SIZE(command)
+  appStore.setSize(command)
   // refreshView()
 }
 </script>
