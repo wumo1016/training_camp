@@ -24,8 +24,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import Sidebar from './components/SideBar/index.vue'
-import NavBar from './components/NavBar/index.vue'
+import Sidebar from './components/side-bar/index.vue'
+import NavBar from './components/nav-bar/index.vue'
 
 const route = useRoute()
 const compKey = computed(() => route.path)

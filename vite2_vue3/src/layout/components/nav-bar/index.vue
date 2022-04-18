@@ -13,10 +13,10 @@
 
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import Hambuger from './Hambuger/index.vue'
-import Breadcrumb from './Breadcrumb/index.vue'
-import ScreenFull from './Screenfull/index.vue'
-import SizeSelect from './SizeSelect/index.vue'
+import Hambuger from './hambuger/index.vue'
+import Breadcrumb from './breadcrumb/index.vue'
+import ScreenFull from './screenfull/index.vue'
+import SizeSelect from './size-select/index.vue'
 import { useAppStore } from '@/store/app'
 
 const appStore = useAppStore()

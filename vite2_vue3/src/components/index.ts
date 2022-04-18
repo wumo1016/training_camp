@@ -1,5 +1,5 @@
 import type { App, Component } from 'vue'
-import SvgIcon from '@/components/SvgIcon/index.vue'
+import SvgIcon from '@/components/svg-icon/index.vue'
 
 const components: {
   [key: string]: Component
