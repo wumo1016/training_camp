@@ -7,6 +7,7 @@
       <el-tooltip content="Global Size" effect="dark" placement="bottom">
         <SizeSelect class="right-menu-item hover-effect" />
       </el-tooltip>
+      <Avatar />
     </div>
   </div>
 </template>
@@ -17,6 +18,7 @@ import Hambuger from './hambuger/index.vue'
 import Breadcrumb from './breadcrumb/index.vue'
 import ScreenFull from './screenfull/index.vue'
 import SizeSelect from './size-select/index.vue'
+import Avatar from './avatar/index.vue'
 import { useAppStore } from '@/store/app'
 
 const appStore = useAppStore()
@@ -27,7 +29,7 @@ const toggleClick = () => {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .navbar {
   height: 50px;
   background: #fff;
@@ -37,7 +39,6 @@ const toggleClick = () => {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 15px;
     &-item {
       padding: 0 8px;
       font-size: 18px;

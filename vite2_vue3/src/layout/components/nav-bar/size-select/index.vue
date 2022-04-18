@@ -52,7 +52,7 @@ const handleSize = (command: ISize) => {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .size-icon {
   font-size: 18px;
 }
