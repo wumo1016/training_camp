@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from 'url'
-import { defineConfig } from 'vite'
+import { defineConfig, type PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
@@ -17,7 +17,7 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]',
       inject: 'body-last',
       customDomId: '__svg__icons__dom__'
-    })
+    }) as PluginOption
   ],
   resolve: {
     alias: {
@@ -28,7 +28,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        charset: false, // 解决打包编译报错
+        charset: false // 解决打包编译报错
         // javascriptEnabled: true // scss 支持内联 JavaScript
         // additionalData: "@import '@/styles/variables.module.scss';" // 引入全局样式
       }

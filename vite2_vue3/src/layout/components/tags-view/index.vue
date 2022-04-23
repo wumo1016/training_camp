@@ -12,7 +12,7 @@
         tag="span"
       >
         {{ tag.meta.title || '' }}
-        <el-icon>
+        <el-icon v-if="!isAffix(tag)">
           <close @click.prevent.stop="closeSelectedTag(tag)" />
         </el-icon>
       </router-link>
@@ -24,6 +24,7 @@
 import { useRoute, useRouter, type RouteRecordRaw } from 'vue-router'
 import { useAppStore } from '@/store/app'
 import { computed, onMounted, watch } from 'vue'
+import { routes } from '@/router'
 
 const route = useRoute()
 const router = useRouter()
@@ -55,6 +56,42 @@ const closeSelectedTag = (tag: RouteRecordRaw) => {
   if (isActive(tag)) toLastView(tag)
 }
 
+// 从路由表中过滤出要affixed tagviews
+const fillterAffixTags = (routes: Array<RouteRecordRaw>, basePath = '/') => {
+  let tags: RouteRecordRaw[] = []
+  routes.forEach(route => {
+    if (route.meta && route.meta.affix) {
+      // 把路由路径解析成完整路径，路由可能是相对路径
+      tags.push({
+        name: route.name,
+        path: route.path,
+        meta: { ...route.meta }
+      } as RouteRecordRaw)
+    }
+    // 深度优先遍历 子路由（子路由路径可能相对于route.path父路由路径）
+    if (route.children) {
+      const childTags = fillterAffixTags(route.children, route.path)
+      if (childTags.length) {
+        tags = [...tags, ...childTags]
+      }
+    }
+  })
+  return tags
+}
+
+// 初始添加affix的tag
+const initTags = () => {
+  const affixTags = fillterAffixTags(routes)
+  for (const tag of affixTags) {
+    if (tag.name) appStore.addView(tag)
+  }
+}
+
+// 是否是始终固定在tagsview上的tag
+const isAffix = (tag: RouteRecordRaw) => {
+  return tag.meta?.affix
+}
+
 watch(
   () => route.path,
   () => {
@@ -63,6 +100,7 @@ watch(
 )
 
 onMounted(() => {
+  initTags()
   addTags()
 })
 </script>

@@ -15,7 +15,8 @@ const constantRoutes: RouteRecordRaw[] = [
         meta: {
           title: 'Dashboard',
           icon: 'dashboard',
-          dashboard: true
+          dashboard: true,
+          affix: true
         }
       }
     ]
@@ -52,7 +53,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           ),
         meta: {
           title: 'Document',
-          // icon: 'documentation'
           icon: 'el-icon-plus'
         }
       }
@@ -71,7 +71,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'guide',
           icon: 'guide',
-          hidden: false,
+          hidden: false
           // activeMenu: '/document/index'
         }
       }
@@ -104,7 +104,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "role" */ '@/views/system/role.vue'),
         meta: {
           title: 'Role Management'
-          // hidden: true
         }
       },
       {
