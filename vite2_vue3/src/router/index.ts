@@ -9,7 +9,7 @@ const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: 'dashboard',
-        name: 'Dashboard',
+        name: 'dashboard',
         component: () =>
           import(/* webpackChunkName: "dashboard" */ '@v/dashboard/index.vue'),
         meta: {

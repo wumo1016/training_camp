@@ -21,11 +21,12 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, type RouteRecordRaw } from 'vue-router'
+import { useRoute, useRouter, type RouteRecordRaw } from 'vue-router'
 import { useAppStore } from '@/store/app'
 import { computed, onMounted, watch } from 'vue'
 
 const route = useRoute()
+const router = useRouter()
 const appStore = useAppStore()
 
 const isActive = (tag: RouteRecordRaw) => tag.path === route.path
@@ -36,8 +37,22 @@ const addTags = () => {
   if (name) appStore.addView(route)
 }
 
+const toLastView = (tag: RouteRecordRaw) => {
+  const lastRoute = visitedTags.value.at(-1)
+  if (lastRoute) {
+    router.push(lastRoute.path)
+  } else {
+    if (tag.name === 'dashboard') {
+      router.replace({ path: '/redirect' + tag.path })
+    } else {
+      router.push('/')
+    }
+  }
+}
+
 const closeSelectedTag = (tag: RouteRecordRaw) => {
   appStore.removeView(tag)
+  if (isActive(tag)) toLastView(tag)
 }
 
 watch(
