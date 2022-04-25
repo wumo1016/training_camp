@@ -63,8 +63,7 @@ const cacheViews = ref([])
   }
   .main-container {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    width: 0;
     > .header {
       background: cyan;
       .tags-view {
