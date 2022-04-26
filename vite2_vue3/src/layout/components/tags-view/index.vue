@@ -148,6 +148,11 @@ onMounted(() => {
       //   height: 100%;
       // }
     }
+
+    .el-tabs__nav-next,
+    .el-tabs__nav-prev {
+      line-height: 34px;
+    }
     .el-tabs__item {
       height: 34px;
       line-height: 34px;
