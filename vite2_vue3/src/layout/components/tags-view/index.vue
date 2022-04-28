@@ -1,40 +1,19 @@
 <template>
   <div class="tags-view-container">
-    <el-tabs v-model="activeRoute">
+    <el-tabs v-model="activeRoute" @tab-click="tabClick">
       <el-tab-pane
         v-for="(tag, index) in visitedTags"
         :key="index"
         :name="tag.path"
-        :closable="!isAffix(tag)"
       >
         <template #label>
-          <div
-            :class="{
-              active: isActive(tag)
-            }"
-          >
-            {{ tag.meta.title || '' }}
-          </div>
+          {{ tag.meta.title || '' }}
+          <el-icon v-if="!isAffix(tag)">
+            <close @click.prevent.stop="closeSelectedTag(tag)" />
+          </el-icon>
         </template>
       </el-tab-pane>
     </el-tabs>
-    <!-- <div class="tags-view-wrapper">
-      <router-link
-        class="tags-view-item"
-        :class="{
-          active: isActive(tag)
-        }"
-        v-for="(tag, index) in visitedTags"
-        :key="index"
-        :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
-        tag="span"
-      >
-        {{ tag.meta.title || '' }}
-        <el-icon v-if="!isAffix(tag)">
-          <close @click.prevent.stop="closeSelectedTag(tag)" />
-        </el-icon>
-      </router-link>
-    </div> -->
   </div>
 </template>
 
@@ -68,6 +47,10 @@ const toLastView = (tag: RouteRecordRaw) => {
       router.push('/')
     }
   }
+}
+
+const tabClick = (tag: any) => {
+  router.push(tag.props.name)
 }
 
 const closeSelectedTag = (tag: RouteRecordRaw) => {
@@ -135,18 +118,10 @@ onMounted(() => {
   :deep(.el-tabs) {
     width: 100%;
     height: 100%;
+    padding: 0 12px;
     .el-tabs__header {
       height: 100%;
       margin: 0;
-      // .el-tabs__nav-wrap {
-      //   height: 100%;
-      // }
-      // .el-tabs__nav-scroll {
-      //   height: 100%;
-      // }
-      // .el-tabs__nav {
-      //   height: 100%;
-      // }
     }
 
     .el-tabs__nav-next,
@@ -156,6 +131,7 @@ onMounted(() => {
     .el-tabs__item {
       height: 34px;
       line-height: 34px;
+      padding: 0 10px;
     }
   }
   // .tags-view-wrapper {
