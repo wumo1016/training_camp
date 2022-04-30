@@ -7,10 +7,12 @@
         :name="tag.path"
       >
         <template #label>
-          {{ tag.meta.title || '' }}
-          <el-icon v-if="!isAffix(tag)">
-            <close @click.prevent.stop="closeSelectedTag(tag)" />
-          </el-icon>
+          <span class="label">
+            {{ tag.meta.title || '' }}
+            <el-icon v-if="!isAffix(tag)">
+              <close @click.prevent.stop="closeSelectedTag(tag)" />
+            </el-icon>
+          </span>
         </template>
       </el-tab-pane>
     </el-tabs>
@@ -124,6 +126,16 @@ onMounted(() => {
       margin: 0;
     }
 
+    .el-tabs__nav-wrap {
+      &::after {
+        display: none;
+      }
+    }
+
+    .el-tabs__active-bar {
+      display: none;
+    }
+
     .el-tabs__nav-next,
     .el-tabs__nav-prev {
       line-height: 34px;
@@ -131,69 +143,32 @@ onMounted(() => {
     .el-tabs__item {
       height: 34px;
       line-height: 34px;
-      padding: 0 10px;
+      padding: 0 1px;
+      .label {
+        display: inline-flex;
+        align-items: center;
+        height: 26px;
+        line-height: 26px;
+        border: 1px solid #d8dce5;
+        background: #fff;
+        color: #495060;
+        padding: 0 8px;
+        box-sizing: border-box;
+        font-size: 12px;
+        margin-left: 5px;
+        margin-top: 4px;
+        i {
+          margin-left: 3px;
+        }
+        user-select: none;
+      }
+    }
+    .is-active {
+      .label {
+        background-color: #42b983;
+        color: #fff;
+      }
     }
   }
-  // .tags-view-wrapper {
-  //   .tags-view-item {
-  //     display: inline-block;
-  //     height: 26px;
-  //     line-height: 26px;
-  //     border: 1px solid #d8dce5;
-  //     background: #fff;
-  //     color: #495060;
-  //     padding: 0 8px;
-  //     box-sizing: border-box;
-  //     font-size: 12px;
-  //     margin-left: 5px;
-  //     margin-top: 4px;
-  //     &:first-of-type {
-  //       margin-left: 15px;
-  //     }
-  //     &:last-of-type {
-  //       margin-right: 15px;
-  //     }
-  //     &.active {
-  //       background-color: #42b983;
-  //       color: #fff;
-  //       border-color: #42b983;
-  //       &::before {
-  //         position: relative;
-  //         display: inline-block;
-  //         content: '';
-  //         width: 8px;
-  //         height: 8px;
-  //         border-radius: 50%;
-  //         margin-right: 5px;
-  //         background: #fff;
-  //       }
-  //     }
-  //   }
-  // }
 }
-</style>
-
-<style lang="scss">
-// .tags-view-container {
-//   .el-icon {
-//     width: 16px;
-//     height: 16px;
-//     position: relative;
-//     left: 2px;
-//     top: -1px;
-//     border-radius: 50%;
-//     text-align: center;
-//     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-//     transform-origin: 100% 50%;
-//     &:before {
-//       transform: scale(0.6);
-//       display: inline-block;
-//       vertical-align: -1px;
-//     }
-//     &:hover {
-//       background-color: #b4bccc;
-//       color: #fff;
-//     }
-//   }
-// }
 </style>
